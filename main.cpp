@@ -63,7 +63,7 @@ void choice() {
         default:
             std::cin.clear();
             std::cin.ignore(10000, '\n');
-            std::cout<<"[!]Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
+            std::cout<<"[!] Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
             choice();
 
         }
