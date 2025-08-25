@@ -48,7 +48,12 @@ void choice() {
             }
             while (player_num < 0 || player_num > 100) {
                 std::cout<<"The number of choice is outside of the interval mentioned. Try again: ";
-                std::cin>>player_num;
+                while(!(std::cin>>player_num)) {
+                    std::cout<<"Not a number. Try again: ";
+                    std::cin.clear();
+                    std::cin.ignore(10000, '\n');
+
+            }
             }
             std::cout<<"- You chose: "<<player_num<<std::endl;
             if (bot_points != -5) {
