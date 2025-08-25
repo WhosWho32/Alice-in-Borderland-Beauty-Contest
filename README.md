@@ -9,5 +9,5 @@ Let me know if you have any code improvements suggestions or bugs to report!
 -WhosWho
 
 -------------------------------------------------------------------------------
-This project was written in C++
-In order to run the program, run the file "main.cpp" after getting the other ones too, otherwise it won't work. Go to an online C++ compiler such as OnlineGDB (Link: https://www.onlinegdb.com/online_c++_compiler) or you can just use Code::Blocks (where I wrote the program), Visual Studio Code or others like that. Again, make sure you have all the files before proceeding!
+This project was written in C++.
+In order to run the program, run the file "main.cpp" after getting the other ones too, otherwise it won't work. Go to an online C++ compiler such as OnlineGDB (Link: https://www.onlinegdb.com/online_c++_compiler) and upload all the files there or you can just use Code::Blocks (where I wrote the program), Visual Studio Code and others like that and upload all the files there.
