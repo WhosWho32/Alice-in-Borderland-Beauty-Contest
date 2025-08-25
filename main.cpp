@@ -8,8 +8,8 @@
 //Initially both the player and the bot have 0 points
 short int player_points = 0;
 short int bot_points = 0;
-float player_num;
-float bot_num;
+short int player_num;
+short int bot_num;
 float final_num;
 char c;
 bool aggressive = false;
@@ -30,24 +30,37 @@ void choice() {
     std::cin>>c;
     switch (c) {
         case 'r':
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
             rules();
             break;
         case 'a':
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
             std::cout<<"You chose to act. You'll have to pick a number between 0 and 100 now."<<std::endl;
             std::cout<<"Your number of choice: ";
-            std::cin>>player_num;
+            //Validate user input
+            while(!(std::cin>>player_num)) {
+               std::cout<<"Not a number. Try again: ";
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+
+            }
             while (player_num < 0 || player_num > 100) {
                 std::cout<<"The number of choice is outside of the interval mentioned. Try again: ";
                 std::cin>>player_num;
             }
             std::cout<<"- You chose: "<<player_num<<std::endl;
             if (bot_points != -5) {
-                botdecide();
+            botdecide();
             }
             break;
         default:
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
             std::cout<<"[!]Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
             choice();
+
         }
 
 }
