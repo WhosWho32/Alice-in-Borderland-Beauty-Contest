@@ -11,7 +11,7 @@ short int bot_points = 0;
 short int player_num;
 short int bot_num;
 float final_num;
-char c;
+static std::string c;
 bool aggressive = false;
 
 int finalNum() {
@@ -28,45 +28,50 @@ void choice() {
     std::cout<<"- Act [a]"<<std::endl;
     std::cout<<"> Your choice: ";
     std::cin>>c;
-    switch (c) {
-        case 'r':
+    //Make the user input only a single character instead of multiple
+    while(!(c.size() == 1)) {
+        std::cout<<"[!] Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        std::cout<<"> Your choice: ";
+        std::cin>>c;
+
+    }
+    if (c == "r") {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        rules();
+    } else if (c == "a") {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        std::cout<<"You chose to act. You'll have to pick a number between 0 and 100 now."<<std::endl;
+        std::cout<<"Your number of choice: ";
+        //Validate user input
+        while(!(std::cin>>player_num)) {
+           std::cout<<"Not a number. Try again: ";
             std::cin.clear();
             std::cin.ignore(10000, '\n');
-            rules();
-            break;
-        case 'a':
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout<<"You chose to act. You'll have to pick a number between 0 and 100 now."<<std::endl;
-            std::cout<<"Your number of choice: ";
-            //Validate user input
+
+        }
+        while (player_num < 0 || player_num > 100) {
+            std::cout<<"The number of choice is outside of the interval mentioned. Try again: ";
             while(!(std::cin>>player_num)) {
-               std::cout<<"Not a number. Try again: ";
+                std::cout<<"Not a number. Try again: ";
                 std::cin.clear();
                 std::cin.ignore(10000, '\n');
 
-            }
-            while (player_num < 0 || player_num > 100) {
-                std::cout<<"The number of choice is outside of the interval mentioned. Try again: ";
-                while(!(std::cin>>player_num)) {
-                    std::cout<<"Not a number. Try again: ";
-                    std::cin.clear();
-                    std::cin.ignore(10000, '\n');
-
-            }
-            }
-            std::cout<<"- You chose: "<<player_num<<std::endl;
-            if (bot_points != -5) {
-            botdecide();
-            }
-            break;
-        default:
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cout<<"[!] Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
-            choice();
-
         }
+        }
+        std::cout<<"- You chose: "<<player_num<<std::endl;
+        if (bot_points != -5) {
+        botdecide();
+        }
+    } else {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        std::cout<<"[!] Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
+        choice();
+    }
 
 }
 
