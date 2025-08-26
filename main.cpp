@@ -33,6 +33,10 @@ void choice() {
         std::cout<<"[!] Unknown command. Make sure you typed the initial for one of the commands provided."<<std::endl;
         std::cin.clear();
         std::cin.ignore(10000, '\n');
+        std::cout<<std::endl;
+        std::cout<<"[?] What would you like to do?"<<std::endl;
+        std::cout<<"- Read the rules [r]"<<std::endl;
+        std::cout<<"- Act [a]"<<std::endl;
         std::cout<<"> Your choice: ";
         std::cin>>c;
 
